@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/rhino.png">
     <router-view />
   </div>
 </template>
