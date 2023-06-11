@@ -1,8 +1,9 @@
 <template>
     <div class="user-management">
         <h1 class="title">Administración de socios</h1>
-        <div class="search-box">
-            <input v-model="searchTerm" placeholder="Buscar socios..." @input="filterUsers" />
+        <div class="action-bar">
+            <input class="search-input" v-model="searchTerm" placeholder="Buscar..." @input="filterUsers" />
+            <router-link to="/create-user" class="create-user-button">Crear usuario</router-link>
         </div>
         <div class="results-box">
             <table>
@@ -70,7 +71,6 @@ export default {
 };
 </script>
 
-  
 <style scoped>
 .user-management {
     padding: 1em;
@@ -83,25 +83,28 @@ export default {
     color: #fff;
 }
 
-.search-box {
-    width: 33%;
-    /* Limit width to one third of container */
-    margin-bottom: 1em;
-    text-align: left;
+.action-bar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px; /* Space between the search bar and the results */
 }
 
-.search-box input {
-    width: 100%;
-    padding: 0.5em;
+.search-input {
+  width: 33%;
+  padding: 0.5em;
+}
+
+.create-user-button {
+  padding: 0.5em 1em;
+  background-color: #555;
+  color: white
 }
 
 .results-box {
     width: 100%;
-    /* Make the box fill its container */
     height: 500px;
-    /* Set a fixed height */
     overflow-y: auto;
-    /* Enable vertical scrolling */
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 1em;
@@ -118,11 +121,10 @@ export default {
     padding: 10px;
     text-align: left;
     color: #fff;
-    /* Set text color to white */
 }
 
 .results-box th {
     background-color: #333;
     color: #fff;
-}</style>
-  
+}
+</style>

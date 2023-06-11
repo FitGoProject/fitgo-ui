@@ -3,6 +3,7 @@ import LoginPage from './components/LoginPage.vue';
 import MainLayout from './components/MainLayout.vue';
 import UserDashboard from './components/UserDashboard.vue';
 import UserManagement from './components/UserManagement.vue';
+import CreateUser from './components/CreateUser.vue';
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
         path: '',
         name: 'user-management',
         component: UserManagement,
+      },
+      {
+        path: '/create-user',
+        name: 'CreateUser',
+        component: CreateUser
       }
     ]
   },
