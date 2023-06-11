@@ -1,52 +1,51 @@
 <template>
     <div class="dashboard">
-      <div class="sidebar">
-        <div class="user-info">
-          <img class="avatar" src="https://www.w3schools.com/w3images/avatar2.png" alt="User Avatar" />
-          <h2 class="user-info">{{ username }}</h2>
+        <div class="sidebar">
+            <div class="user-info">
+                <img class="avatar" src="https://www.w3schools.com/w3images/avatar2.png" alt="User Avatar" />
+                <h2 class="user-info">{{ username }}</h2>
+            </div>
+            <hr class="divider" />
+            <ul class="menu-list">
+                <li><router-link to="/user-dashboard">Inicio</router-link></li>
+                <li><router-link to="/user-management">Administración de socios</router-link></li>
+                <li>Horarios</li>
+            </ul>
         </div>
-        <hr class="divider" />
-        <ul class="menu-list">
-          <li><router-link to="/user-dashboard">Inicio</router-link></li>
-          <hr class="divider" />
-          <li><router-link to="/user-management">Administración de socios</router-link></li>
-          <hr class="divider" />
-          <li>Clases</li>
-          <hr class="divider" />
-          <li>Horarios</li>
-        </ul>
-      </div>
-      <div class="main-content">
-        <router-view></router-view>
-      </div>
+        <div class="main-content">
+            <router-view></router-view>
+        </div>
     </div>
-  </template>
+</template>
   
-  <script>
-  export default {
+<script>
+export default {
     name: 'MainLayout',
     data() {
-      return {
-        username: 'Danilo Orrego',
-      };
+        return {
+            username: 'Danilo Orrego',
+        };
     },
-  };
-  </script>
+};
+</script>
   
-  <style scoped>
-  body {
+<style scoped>
+body {
     background-color: #111;
     font-family: 'Inter', sans-serif;
     color: #fff;
     font-size: 16px;
-  }
-  
-  .dashboard {
+    margin: 0; /* Remove default margin */
+    height: 100vh; /* Set height to 100% of viewport height */
+    overflow: hidden; /* Hide scrollbars */
+}
+
+.dashboard {
     display: flex;
     height: 100vh;
-  }
-  
-  .sidebar {
+}
+
+.sidebar {
     width: 20%;
     background-color: #222;
     color: #fff;
@@ -57,64 +56,104 @@
     justify-content: flex-start;
     align-items: flex-start;
     border-right: 1px solid #333;
-  }
-  
-  .user-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1em;
-  }
-  
-  .user-info .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 1em;
-  }
-  
-  .user-info {
+}
+.sidebar .username {
     font-size: 22px;
     font-weight: bold;
     color: #fff;
-  }
-  
-  .divider {
+}
+
+.sidebar .divider {
     width: 100%;
     height: 1px;
     background-color: #333;
     border: none;
     margin: 1em 0;
-  }
-  
-  .menu-list {
+}
+
+.sidebar .menu-list {
     list-style-type: none;
     padding: 0;
     font-size: 18px;
     width: 100%;
-  }
-  
-  .menu-list li {
+}
+
+.sidebar .menu-list li {
     margin-bottom: 1em;
     cursor: pointer;
     color: #aaa;
-  }
-  
-  .menu-list li:hover {
+    text-align: left; /* Justify the menu items to the left */
+}
+
+.sidebar .menu-list li:hover {
     color: #fff;
-  }
-  
-  .main-content {
+}
+
+.sidebar .menu-list li a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+.sidebar .menu-list li a:hover {
+    color: #fff; /* Change the color on hover */
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.user-info .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 1em;
+}
+
+.user-info {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: #333;
+    border: none;
+    margin: 1em 0;
+}
+
+.menu-list {
+    list-style-type: none;
+    padding: 0;
+    font-size: 18px;
+    width: 100%;
+}
+
+.menu-list li {
+    margin-bottom: 1em;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.menu-list li:hover {
+    color: #fff;
+}
+
+.main-content {
     width: 80%;
     padding: 2em;
     box-sizing: border-box;
     overflow-y: auto;
     background-color: #111;
-  }
-  
-  .main-content h1 {
+}
+
+.main-content h1 {
     font-size: 28px;
     font-weight: bold;
-    color: #fff;
-  }
-  </style>
+    color: #c2a4a4;
+}
+</style>
   
