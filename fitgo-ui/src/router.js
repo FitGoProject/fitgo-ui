@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LoginPage from './components/LoginPage.vue';
+import MainLayout from './components/MainLayout.vue';
 import UserDashboard from './components/UserDashboard.vue';
+import UserManagement from './components/UserManagement.vue';
 
 const routes = [
   {
@@ -10,8 +12,25 @@ const routes = [
   },
   {
     path: '/user-dashboard',
-    name: 'user-dashboard',
-    component: UserDashboard,
+    component: MainLayout,
+    children: [
+      {
+        path: '',
+        name: 'user-dashboard',
+        component: UserDashboard,
+      }
+    ]
+  },
+  {
+    path: '/user-management',
+    component: MainLayout,
+    children: [
+      {
+        path: '',
+        name: 'user-management',
+        component: UserManagement,
+      }
+    ]
   },
   // other routes...
 ];
