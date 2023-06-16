@@ -2,7 +2,7 @@
     <div class="user-management">
         <h1 class="title">Administración de socios</h1>
         <div class="action-bar">
-            <input class="search-input" v-model="searchTerm" placeholder="Buscar..." @input="filterUsers" />
+            <input v-model="searchTerm" placeholder="Buscar..." @input="filterUsers" />
             <router-link to="/create-user" class="create-user-button">Crear usuario</router-link>
         </div>
         <div class="results-box">
@@ -17,7 +17,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="user in filteredUsers" :key="user.id">
+                    <tr v-for="user in nonAdminUsers" :key="user.id">
                         <td>{{ user.name }}</td>
                         <td>{{ user.lastName }}</td>
                         <td>{{ user.email }}</td>
@@ -68,6 +68,11 @@ export default {
             );
         },
     },
+    computed: {
+        nonAdminUsers() {
+            return this.filteredUsers.filter(user => !user.roles.includes('admin'));
+        },
+    },
 };
 </script>
 
@@ -84,21 +89,22 @@ export default {
 }
 
 .action-bar {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 20px; /* Space between the search bar and the results */
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+    /* Space between the search bar and the results */
 }
 
 .search-input {
-  width: 33%;
-  padding: 0.5em;
+    width: 33%;
+    padding: 0.5em;
 }
 
 .create-user-button {
-  padding: 0.5em 1em;
-  background-color: #555;
-  color: white
+    padding: 0.5em 1em;
+    background-color: #555;
+    color: white
 }
 
 .results-box {
